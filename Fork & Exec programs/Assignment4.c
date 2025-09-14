@@ -9,13 +9,13 @@ int main(){
 	
 	if (pid < 0){
 		perror("fork");
-		exit(1);
+	        exit(EXIT_FAILURE);
 	}
 	else if(pid == 0){
 		int ret = execl("/bin/grep", "grep", "bla","test.txt", NULL);
 		if (ret < 0){
 			perror("grep");
-			exit(1);
+		        exit(EXIT_FAILURE);
 		}
 	}
 

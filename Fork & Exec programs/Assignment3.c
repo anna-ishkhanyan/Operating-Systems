@@ -9,7 +9,7 @@ int main(){
 	
 	if (pid < 0){
 		perror("fork");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0){
 		char arg[200];
@@ -19,7 +19,7 @@ int main(){
 		int ret = execl("/bin/echo", "echo", arg,  NULL);
 		if (ret < 0){
 			perror("execl");
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 	}
 	wait(NULL);

@@ -10,6 +10,7 @@ void check_pid(pid_t pid, int num) { // used the function from the textbook to a
         printf("Number %d: I am the baby! PID=%d, PPID=%d\n", num, getpid(), getppid());
     } else if (pid == -1) {
         perror("fork"); //checks for the errors, calls perror which prints the stderr output
+	exit(EXIT_FAILURE);
     }
 }
 

@@ -2,11 +2,14 @@
 #include <stdio.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <stdlib.h>
 
 int main(){
 	pid_t pid = fork(); // creates a child process
-	if (pid < 0) // fails to create
-		perror("fork"); 
+	if (pid < 0){ // fails to create
+		perror("fork");
+		exit(EXIT_FAILURE);
+	}	
 	else if (pid == 0){ // child process
 		int ret; // used the textbook for this strucure, so we just
 		ret = execl("/bin/ls", "ls", ".",NULL); // use execl which replaces the current process image with a new one by loading into memory the progeam we mentioned in the past, then we mentioned the command ls, then the current directory, then NULL as the argument list of execl has to be null terminated
