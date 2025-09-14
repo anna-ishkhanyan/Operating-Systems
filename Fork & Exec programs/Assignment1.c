@@ -13,8 +13,10 @@ int main(){
 	else if (pid == 0){ // child process
 		int ret; // used the textbook for this strucure, so we just
 		ret = execl("/bin/ls", "ls", ".",NULL); // use execl which replaces the current process image with a new one by loading into memory the progeam we mentioned in the past, then we mentioned the command ls, then the current directory, then NULL as the argument list of execl has to be null terminated
-		if (ret == -1) // fails 
-			perror ("execl"); 
+		if (ret == -1){ // fails 
+			perror ("execl");
+			exit(EXIT_FAILURE);
+		}
 	}
 	wait(NULL); // if its the parent process, waits until the child is finished and prints the message
 	printf("Parent process done\n");
